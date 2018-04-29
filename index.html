@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Start</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="" />
+	<link rel="icon" href="favicon.png"/>
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+
+	<div class="ba-container">
+		<div id="for_change" class="for_css">
+			<span>Click me and write something</span>
+			<textarea id="for_writing" class="for_css--textarea" placeholder="write something"></textarea>
+		</div>
+	<button id="saveText" class="for_css--button">Save text</button>
+	<button id="escapeText" class="for_css--button">Cancel</button>
+	<button id="refreshText" class="for_css--button">Refresh</button>
+	</div>
+
+	<script>
+
+		for_change.addEventListener('click', afterClickOnDiv);
+		saveText.addEventListener('click', savingTextFromTextarea);
+		escapeText.addEventListener('click', escapingTextFromTextarea);
+		refreshText.addEventListener('click', refreshTextFromTextarea);
+
+		function afterClickOnDiv(){
+			for_change.style.visibility = 'hidden';
+			for_writing.style.visibility = 'visible';
+			saveText.style.visibility = 'visible';
+			escapeText.style.visibility = 'visible';
+			refreshText.style.visibility = 'visible';
+
+		};
+
+		var textFromTextarea = '';
+		var textToStartDiv = '';
+		function savingTextFromTextarea(){
+			for_change.style.visibility = 'visible';
+			for_writing.style.visibility = 'hidden';
+			saveText.style.visibility = 'hidden';
+			escapeText.style.visibility = 'hidden';
+			textFromTextarea = for_writing.value;
+			textToStartDiv = document.getElementById('for_change');
+			textToStartDiv.innerHTML = "<h2>Your message is: <br>" +textFromTextarea;
+			if(textFromTextarea == ''){
+				textToStartDiv.innerHTML = "<h5>Try to write something</h5>";
+			};
+
+
+		};
+
+		function escapingTextFromTextarea(){
+			for_change.style.visibility = 'visible';
+			for_writing.style.visibility = 'hidden';
+			saveText.style.visibility = 'hidden';
+			escapeText.style.visibility = 'hidden';
+		}
+
+		function refreshTextFromTextarea(){
+			location.reload(true);
+
+		}
+
+	</script>
+
+</body>
+</html>
+
